@@ -8,6 +8,16 @@ const AuthInput = styled.TextInput`
     border-radius: 5px;
 `;
 
+const CreateInput = styled.TextInput`
+    width: 100%;
+    height: 50px;
+    border: 1px solid lightgray;
+    padding: 0 10px;
+    border-radius: 5px;
+    font-size: 16px;
+`;
+
 export {
     AuthInput,
+    CreateInput
 }

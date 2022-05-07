@@ -11,6 +11,16 @@ const AuthForm = styled.View`
     margin: 0 0 20px 0;
 `;
 
+const StyledCreateGameForm = styled.View`
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+`;
+
 export {
     AuthForm,
+    StyledCreateGameForm
 }

@@ -1,12 +1,16 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from "react";
+import { TopScreen } from "../styles/screens";
+import Navigation from "../components/navigation/Navigation";
+import CreateGameForm from "../components/create/CreateGameForm";
 
 const CreateScreen = () => {
-  return (
-    <View>
-      <Text>CreateScreen</Text>
-    </View>
-  )
-}
+    return (
+        <TopScreen>
+            <CreateGameForm />
 
-export default CreateScreen
+            <Navigation />
+        </TopScreen>
+    );
+};
+
+export default CreateScreen;

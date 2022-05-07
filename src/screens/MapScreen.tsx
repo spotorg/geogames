@@ -2,7 +2,7 @@ import React from "react"
 import MapView, { Marker } from "react-native-maps";
 import { useSelector } from "react-redux";
 import styled from "styled-components/native";
-import Navigation from "../components/Navigation";
+import Navigation from "../components/navigation/Navigation";
 import { selectUser, UserInfo } from "../redux/slices/userSlice";
 import { TopScreen } from "../styles/screens";
 import { AppInfo, selectApp } from "../redux/slices/appSlice";
