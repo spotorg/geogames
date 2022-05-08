@@ -9,11 +9,12 @@ const store = configureStore({
         user: userReducer,
         notification: notificationReducer,
         app: appReducer,
-        lang: languageReducer
+        lang: languageReducer,
     },
-    middleware: getDefaultMiddleware => getDefaultMiddleware({
-        serializableCheck: false
-    })
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 });
 
 export default store;

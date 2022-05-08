@@ -10,7 +10,6 @@ import TitleScreen from "../screens/TitleScreen";
 import CreateScreen from "../screens/CreateScreen";
 import { useDispatch, useSelector } from "react-redux";
 import * as Location from "expo-location";
-import { getItemFromStore } from "../store/storeOptions";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,15 +20,10 @@ const Navigator: React.FC = () => {
 
     useEffect(() => {
         const getLoc = async () => {
-            let locationAllowed = await getItemFromStore("locationAllowed");
-
-            if (userInfo.location || locationAllowed === "true") {
-                let { status } =
-                    await Location.requestForegroundPermissionsAsync();
-                if (status === "granted") {
-                    let location = await Location.getCurrentPositionAsync();
-                    dispatch(setLocation(location));
-                }
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status === "granted") {
+                let location = await Location.getCurrentPositionAsync();
+                dispatch(setLocation(location));
             }
         };
 

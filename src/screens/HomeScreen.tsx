@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { TopScreen } from '../styles/screens';
 import Navigation from '../components/navigation/Navigation';
