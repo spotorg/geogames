@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 const CreateGameHeader = styled.View`
     width: 100%;
-    height: 50px;
+    height: 10%;
     display: flex;
     justify-content: flex-start;
     align-items: center;

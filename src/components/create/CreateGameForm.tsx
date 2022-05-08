@@ -4,11 +4,17 @@ import { StyledCreateGameForm } from "../../styles/forms";
 import { CreateGameHeader } from "../../styles/headers";
 import { CreateInput } from "../../styles/inputs";
 import { BlackText } from "../../styles/text";
+import SelectFlags from './../map/SelectFlags';
 
 const CreateGameForm = () => {
     const [gameName, setGameName] = useState("");
     const [gameDescription, setGameDescription] = useState("");
     const [gameAvatar, setGameAvatar] = useState("");
+    const [addFlags, setAddFlags] = useState(false);
+
+    if(addFlags){
+        return <SelectFlags setAddFlags={setAddFlags} />
+    }
 
     return (
         <StyledCreateGameForm style={{ height: "90%" }}>
@@ -30,7 +36,7 @@ const CreateGameForm = () => {
                 style={{ backgroundColor: "#ffffff" }}
             />
 
-            <AddFlagButton>
+            <AddFlagButton onPress={() => setAddFlags(true)}>
                 <BlackText>Add flags</BlackText>
             </AddFlagButton>
         </StyledCreateGameForm>

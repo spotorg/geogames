@@ -6,9 +6,14 @@ import { AddFlagButton } from "../../styles/buttons";
 import { CreateGameHeader } from "../../styles/headers";
 import { TopScreen } from "../../styles/screens";
 import { BlackText } from "../../styles/text";
+import { StyledNavigationOption2 } from "../navigation/Navigation";
 import { StyledMap, StyledUserAvatar } from "./GameMap";
 
-function SelectFlags() {
+interface Props {
+    setAddFlags: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const SelectFlags: React.FC<Props> = ({ setAddFlags }) => {
     const userInfo: UserInfo = useSelector(selectUser);
 
     const [center, setCener] = useState<{
@@ -26,8 +31,16 @@ function SelectFlags() {
     }, [userInfo.location]);
 
     return (
-        <TopScreen>
+        <TopScreen style={{ height: "90%" }}>
             <CreateGameHeader>
+                <StyledNavigationOption2
+                    name="arrow-back-circle"
+                    onPress={() => setAddFlags(false)}
+                    style={{
+                        marginRight: 5
+                    }}
+                />
+
                 <BlackText>Create game | Add flags</BlackText>
             </CreateGameHeader>
 
@@ -41,6 +54,9 @@ function SelectFlags() {
                     longitudeDelta: 0.05,
                 }}
                 onPress={(e) => console.log(e.nativeEvent.coordinate)}
+                style={{
+                    height: "80%"
+                }}
             >
                 {center?.latitude && center?.longitude ? (
                     <Marker
@@ -56,11 +72,11 @@ function SelectFlags() {
                 ) : null}
             </StyledMap>
 
-            <AddFlagButton style={{height: 40}}>
+            <AddFlagButton>
                 <BlackText>Add flag</BlackText>
             </AddFlagButton>
         </TopScreen>
     );
-}
+};
 
 export default SelectFlags;
