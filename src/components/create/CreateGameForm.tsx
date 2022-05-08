@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { AddFlagButton } from "../../styles/buttons";
 import { StyledCreateGameForm } from "../../styles/forms";
+import { CreateGameHeader } from "../../styles/headers";
 import { CreateInput } from "../../styles/inputs";
+import { BlackText } from "../../styles/text";
 
 const CreateGameForm = () => {
     const [gameName, setGameName] = useState("");
@@ -8,20 +11,28 @@ const CreateGameForm = () => {
     const [gameAvatar, setGameAvatar] = useState("");
 
     return (
-        <StyledCreateGameForm style={{height: "90%"}}>
+        <StyledCreateGameForm style={{ height: "90%" }}>
+            <CreateGameHeader>
+                <BlackText>Create game</BlackText>
+            </CreateGameHeader>
+
             <CreateInput
                 placeholder="game name"
                 value={gameName}
                 onChangeText={(text) => setGameName(text)}
-                style={{backgroundColor: "#ffffff"}}
+                style={{ backgroundColor: "#ffffff" }}
             />
 
             <CreateInput
                 placeholder="game description"
                 value={gameDescription}
                 onChangeText={(text) => setGameDescription(text)}
-                style={{backgroundColor: "#ffffff"}}
+                style={{ backgroundColor: "#ffffff" }}
             />
+
+            <AddFlagButton>
+                <BlackText>Add flags</BlackText>
+            </AddFlagButton>
         </StyledCreateGameForm>
     );
 };

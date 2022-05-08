@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Marker } from "react-native-maps";
 import { useSelector } from "react-redux";
 import { selectUser, UserInfo } from "../../redux/slices/userSlice";
+import { AddFlagButton } from "../../styles/buttons";
+import { CreateGameHeader } from "../../styles/headers";
 import { TopScreen } from "../../styles/screens";
+import { BlackText } from "../../styles/text";
 import { StyledMap, StyledUserAvatar } from "./GameMap";
 
 function SelectFlags() {
@@ -24,6 +27,10 @@ function SelectFlags() {
 
     return (
         <TopScreen>
+            <CreateGameHeader>
+                <BlackText>Create game | Add flags</BlackText>
+            </CreateGameHeader>
+
             <StyledMap
                 initialRegion={{
                     latitude: center?.latitude ? center.latitude : 37.4219616,
@@ -48,6 +55,10 @@ function SelectFlags() {
                     </Marker>
                 ) : null}
             </StyledMap>
+
+            <AddFlagButton style={{height: 40}}>
+                <BlackText>Add flag</BlackText>
+            </AddFlagButton>
         </TopScreen>
     );
 }
