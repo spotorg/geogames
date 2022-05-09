@@ -1,19 +1,27 @@
 import React, { useState } from "react";
-import { AddFlagButton } from "../../styles/buttons";
+import { AddFlagButton, BlackButton } from "../../styles/buttons";
 import { StyledCreateGameForm } from "../../styles/forms";
 import { CreateGameHeader } from "../../styles/headers";
 import { CreateInput } from "../../styles/inputs";
-import { BlackText } from "../../styles/text";
-import SelectFlags from './../map/SelectFlags';
+import { BlackText, WhiteText } from "../../styles/text";
+import SelectFlags from "./../map/SelectFlags";
+import { createGame } from './../../requests/gameRequests';
 
 const CreateGameForm = () => {
     const [gameName, setGameName] = useState("");
     const [gameDescription, setGameDescription] = useState("");
     const [gameAvatar, setGameAvatar] = useState("");
     const [addFlags, setAddFlags] = useState(false);
+    const [flags, setFlags] = useState<any[]>([]);
 
-    if(addFlags){
-        return <SelectFlags setAddFlags={setAddFlags} />
+    if (addFlags) {
+        return (
+            <SelectFlags
+                setAddFlags={setAddFlags}
+                setFlags={setFlags}
+                flags={flags}
+            />
+        );
     }
 
     return (
@@ -37,8 +45,12 @@ const CreateGameForm = () => {
             />
 
             <AddFlagButton onPress={() => setAddFlags(true)}>
-                <BlackText>Add flags</BlackText>
+                <BlackText>Add flags {flags.length > 0 ? `(${flags.length})` : ""}</BlackText>
             </AddFlagButton>
+
+            <BlackButton onPress={() => createGame(gameName, gameDescription, flags)}>
+                <WhiteText>Create game</WhiteText>
+            </BlackButton>
         </StyledCreateGameForm>
     );
 };
