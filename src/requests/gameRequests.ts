@@ -1,4 +1,3 @@
-import * as fs from "fs";
 import { getItemFromStore, saveItem } from "../store/storeOptions";
 
 export const createGame = async (
@@ -25,6 +24,8 @@ export const createGame = async (
     savedGames = [...savedGames, new_game];
 
     const stringifiedGames = JSON.stringify(savedGames);
+
+    console.log(stringifiedGames)
 
     await saveItem("games", stringifiedGames);
 };
