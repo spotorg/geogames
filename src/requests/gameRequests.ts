@@ -1,4 +1,7 @@
-export const createGame = (
+import * as fs from "fs";
+import { getItemFromStore, saveItem } from "../store/storeOptions";
+
+export const createGame = async (
     gameName: string,
     gameDescription: string,
     flags: any[]
@@ -6,10 +9,22 @@ export const createGame = (
     const new_game = {
         name: gameName,
         description: gameDescription,
-        flags: flags
+        flags: flags,
+    };
+
+    const savedGamesString = await getItemFromStore("games");
+
+    let savedGames = null;
+
+    if(savedGamesString){
+        savedGames = JSON.parse(savedGamesString);
+    }else{
+        savedGames = [];
     }
 
-    const stringifiedGame = JSON.stringify(new_game);
+    savedGames = [...savedGames, new_game];
 
-    console.log(stringifiedGame)
+    const stringifiedGames = JSON.stringify(savedGames);
+
+    await saveItem("games", stringifiedGames);
 };
